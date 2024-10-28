@@ -20,7 +20,7 @@ services: #Container
     container_name: mein-backend
     volumes:
     
-      - \Users\Stefan\Desktop\volumeha
+      - ./:/app
       - /app/node_modules
     networks:
       - beispiel-netzwerk

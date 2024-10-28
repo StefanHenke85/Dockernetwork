@@ -21,7 +21,7 @@ connection.query(`CREATE TABLE IF NOT EXISTS daten (
 
 app.get("/add", (req, res) => {
     connection.query(`INSERT INTO daten (logEintrag) VALUES ("Eintrag am ${new Date()}")`);
-    res.send("Hier könnte ihre werbung stehen! ");
+    res.send("hy peter ");
 });
 
 app.get("/all", (req, res) => {
