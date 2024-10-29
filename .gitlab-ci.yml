@@ -1,0 +1,28 @@
+# Definieren der Stages für die Pipeline
+stages:
+  - build
+  - test
+
+# Build-Job für das Docker-Image
+build_image:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind  # Docker-in-Docker, um Docker-Befehle innerhalb des Containers zu erlauben
+  script:
+    - echo "Building Docker image..."
+    - docker build -t dockernetwork_image .
+  only:
+    - main
+
+# Test-Job für das Docker-Image
+test_image:
+  stage: test
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "Running Docker container..."
+    - docker run --rm dockernetwork_image echo "Docker container is running!"
+  only:
+    - main
